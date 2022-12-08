@@ -18,7 +18,8 @@ public class AddressService {
 
     public Address createAddress(String name) {
         Address address = new Address();
-        address.setId("1");
+        address.setCreatedTimestamp(System.currentTimeMillis());
+        address.setModifiedTimestamp(address.getCreatedTimestamp());
         address.setName(name);
 
         return repository.save(address);

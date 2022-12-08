@@ -14,10 +14,27 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	annotationProcessor 'org.hibernate:hibernate-jpamodelgen:6.1.6.Final'
+
 	runtimeOnly 'com.h2database:h2'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+ext {
+	// Directory for generated main Java sources
+	generatedMainJava = 'src/main/generated'
+}
+
+sourceSets {
+	// Add generated sources directory.
+	main.java.srcDir generatedMainJava
+}
+
+compileJava	{
+	options.compilerArgs += ['-AaddGenerationDate=true'] // Specific to Hibernate JPA meta model generation processor.
+	options.annotationProcessorGeneratedSourcesDirectory = file(generatedMainJava)
 }

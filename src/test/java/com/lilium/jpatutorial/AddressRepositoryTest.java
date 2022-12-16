@@ -56,4 +56,30 @@ public class AddressRepositoryTest {
                 .extracting(Address::getId)
                 .containsExactlyInAnyOrder(firstCreatedAddress.getId(), secondCreatedAddress.getId());
     }
+
+    @Test
+    void findAddressByName() {
+        final Address firstCreatedAddress = service.createAddress("742 Evergreen Terrace, Springfield, USA");
+        final Address secondCreatedAddress = service.createAddress("Oxenthorpe Road, Puddleby-on-the-Marsh, Slopshire, England");
+
+        // Search for address by name that does not exist
+        List<Address> foundAddresses = repository.findAll(AddressRepository.Specs.byName("I.do.not.exist"));
+        assertThat(foundAddresses)
+                .isNotNull()
+                .isEmpty();
+
+        // Search for first address by its name
+        foundAddresses = repository.findAll(AddressRepository.Specs.byName(firstCreatedAddress.getName()));
+        assertThat(foundAddresses)
+                .isNotNull()
+                .extracting(Address::getId)
+                .containsExactly(firstCreatedAddress.getId());
+
+        // Search for second address by part of its name
+        foundAddresses = repository.findAll(AddressRepository.Specs.byName("%ngland"));
+        assertThat(foundAddresses)
+                .isNotNull()
+                .extracting(Address::getId)
+                .containsExactly(secondCreatedAddress.getId());
+    }
 }

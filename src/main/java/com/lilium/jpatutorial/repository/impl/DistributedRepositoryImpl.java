@@ -19,7 +19,12 @@ public class DistributedRepositoryImpl<ENTITY> extends SimpleJpaRepository<ENTIT
 
     @Override
     public List<ENTITY> findAllCreatedSince(Long timestamp) {
-        return super.findAll(createdSince(timestamp));
+        return findAll(createdSince(timestamp));
+    }
+
+    @Override
+    public List<ENTITY> findAll(Specification<ENTITY> specification) {
+        return super.findAll(specification);
     }
 
     /**

@@ -4,7 +4,7 @@ import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
 import javax.annotation.processing.Generated;
 
-@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor", date = "2022-12-08T23:51:29.520+0100")
+@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor", date = "2022-12-09T16:18:14.794+0100")
 @StaticMetamodel(NamedEntity.class)
 public abstract class NamedEntity_ extends com.lilium.jpatutorial.entity.DistributedEntity_ {
 

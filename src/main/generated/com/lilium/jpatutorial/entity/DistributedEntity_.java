@@ -4,7 +4,7 @@ import jakarta.persistence.metamodel.SingularAttribute;
 import jakarta.persistence.metamodel.StaticMetamodel;
 import javax.annotation.processing.Generated;
 
-@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor", date = "2022-12-09T16:18:14.790+0100")
+@Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor", date = "2022-12-18T10:58:54.955+0100")
 @StaticMetamodel(DistributedEntity.class)
 public abstract class DistributedEntity_ {
 
